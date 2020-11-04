@@ -1,1 +1,22 @@
-# DSSS_U2IS
+# Étude de la robustesse des techniques d'étalement de spectre en présence de brouillage hostile pour les réseaux sans fil
+L'enjeu actuel des communications en fréquences radio est l'augmentation des performances de la transmission et ceci du côté de l'émetteur et du récepteur et à travers le canal de transmission. La métrique qui mesure l'efficacité des canaux est leur capacité qui est une fonction croissante du rapport signal sur bruit et de la largeur de bande du signal.
+
+                           C = B*log_2(1+S/N) = B*log_2(1+SNR)
+
+Avec S est la puissance du signal et N est celle du bruit. 
+
+Cependant, l'utilisation de ces deux facteurs pour augmenter la capacité du canal n’est pas suffisante dans le cas des communications RF puisque en général pour ce type de transmission les bandes de base sont limitées et la puissance des signaux transmis est toujours affectée par des contraintes matérielles imposées par le canal et l’environnement. Du coup, d’autres méthodes avancées sont introduites. 
+
+Ces méthodes sont basées sur la diminution du TEB. Une première démarche consiste à ajouter au début des trames envoyées un bit de parité dans le cas où le nombre des uns binaires envoyés est pair. Bien que cette méthode soit efficace en terme de coût, elle ne permet pas d'indiquer, si une erreur est détectée, les positions des bits erronés. Ainsi, d'autres méthodes plus complexes sont utilisées à l'instar des codes convolutionnels (des turbo codes) qui permettent de diminuer considérablement le TEB. 
+
+Ces démarches sont efficaces quand il s'agit d'éluder l'effet du bruit thermique introduit par le canal, mais elles restent insuffisantes quand les signaux transmis sont exposés à des sources d'interférence. Ce problème est très fréquent dans le cas des réseaux sans fil. La présence de plusieurs communications radio au même temps crée des interférences au niveau de la réception ce qui bruite le signal reçu et le rend indéchiffrable. De même, l'existence d'obstacles sur le chemin entre l'émetteur et le récepteur forme des zones d'ombrage qui cause l'évanescence de l'onde émise. En outre, on parle de l'effet multi-trajets où le signal est émis sous différentes directions pour donner naissance à plusieurs ondes qui interfèrent à la réception et causent ainsi des erreurs de décision.
+
+Les phénomènes d'interférence sont à la base des techniques de brouillage qui en profitent pour dégrader la communication entre l'émetteur et le récepteur et rendre le signal reçu indéchiffrable. Le fonctionnement des brouilleurs consiste à diminuer la capacité du canal de transmission en ajoutant à la puissance du bruit à l’intérieur du canal une autre puissance qui diminue le SNR. La capacité du canal devient alors :
+
+                                             C = B*log_2(1+S/(N+J))
+
+ où J est la densité spectrale de puissance du signal envoyé par le brouilleur.
+
+ Pour compenser  les erreurs binaires (causés soit par le bruit thermique ou les interférence artificielles ou liés à l'environnement), on peut procéder par deux méthodes : soit utiliser des signaux à bande de base étroite en augmentant considérablement la puissance transmise, soit diminuer la durée des impulsions Tc ce qui correspond à l'étalement de spectre du signal original qui sera alors transmis sur une bande beaucoup plus large. La première démarche est déconseillée dans les applications militaires puisqu'elle augmente le risque de la détection de la communication. Cela revient au fait que plus la puissance du signal est grande plus il est facile de le déchiffrer par d'autres stations outre que le récepteur visé. Ainsi, il devient plus commode dans le cas des communications radio d'utiliser les techniques d'étalement de spectre afin de se protéger contre les attaques extérieures et pour diminuer le TEB. Cependant, il s'avère que ces techniques possèdent des limitations et sont dans certains cas et pour certains brouilleurs peu efficaces. Cette idée est à l'origine d'une recherche qu'on a mené au sein du laboratoire de l'U2IS à l'ENSTA Paris, qui vise à analyser les performances des techniques de communication à étalement de spectre en présence de différents types de brouillages hostiles. 
+
+Les communications considérées lors de cette étude sont toutes sous-marines. Ainsi, on rencontre dans ce cadre en plus des problèmes d'interférence et des multi-trajets, des soucis causés par l'effet Doppler (vu l'importance des distances entre l'émetteur et le récepteur) et le déphasage de l'onde transmise introduit lors de la propagation.  
